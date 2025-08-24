@@ -27,6 +27,10 @@ function Cards(){
               <div className="cards">
                       {
                 equipamentos.map((item)=>{
+                     let ativo = ""
+                        if(equipamentos.ativo === 'false'){
+                           ativo = "não"
+                        }else{ativo = "sim" }
                     return(
                         <CardInstrumento
                         key = {item.id}
@@ -35,7 +39,7 @@ function Cards(){
                         marca={item.marca}
                         ano={item.ano}
                         preco={item.preco}
-                        ativo={item.ativo}
+                        ativo={ativo}
                         voltagem={item.voltagem}
                         peso_kg= {item.peso_kg}
                     >
