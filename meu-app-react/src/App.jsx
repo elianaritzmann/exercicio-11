@@ -1,20 +1,19 @@
-import { useState } from 'react'
+
 import './App.css'
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import Cards from './Cards'; 
 import Tabelas from './Tabelas';
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
+    <div>
       <Routes>
-         <Route path="/" Component={Cards} />
-         <Route path="/criar-conta" Component={Tabelas} />
+         <Route path="/cards" Component={Cards} />
+         <Route path="/tabelas" Component={Tabelas} />
       </Routes>
-        
-        
-    </>
+    </div>
+      
   )
 }
 
