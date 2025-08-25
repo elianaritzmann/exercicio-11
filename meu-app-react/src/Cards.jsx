@@ -4,17 +4,13 @@ import CardInstrumento from "./cardInstrumento"
 import { ToastContainer, toast } from "react-toastify"
 import './Cards.css'
 import { Link } from "react-router-dom"
+import useGetInstruments from "./UseGetInstruments"
 function Cards(){
-    const[equipamentos, setEquipamentos]=useState([])
+   const { data: equipamentos, loading, error } = useGetInstruments();
 
-    useEffect(()=>{
-        axios.get('http://localhost:3000/equipamentos')
-        .then((response)=>{
-            setEquipamentos(response.data)
-        }).catch(()=>{
-            toast.error('algo deu errado')
-        })
-    },[])
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>{error}</p>;
+
     
     return(
         <div className="cardsContainer">
