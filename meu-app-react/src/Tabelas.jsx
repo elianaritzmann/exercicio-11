@@ -4,18 +4,13 @@ import { ToastContainer, toast } from "react-toastify"
 import { Link } from "react-router-dom"
 import TabelaTr from "./TabelaTr"
 import './Tabelas.css'
+import useGetInstruments from "./UseGetInstruments"
 function Tabelas(){
-     const[equipamentos, setEquipamentos]=useState([])
+    const { data: equipamentos, loading, error } = useGetInstruments();
 
-    useEffect(()=>{
-        axios.get('http://localhost:3000/equipamentos')
-        .then((response)=>{
-            setEquipamentos(response.data)
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>{error}</p>;
 
-        }).catch(()=>{
-            toast.error('algo deu errado')
-        })
-    },[])
     return(
         <div className="tabelaContainer">
             <ToastContainer></ToastContainer>
